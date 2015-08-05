@@ -16,8 +16,38 @@ public class NearbyWords {
 
 	public static void main(String[] args) {
 		System.out.println(nearbyWords("gi"));
+		
+		double num=2.0d;//444444434535.54345435343d;
+		System.out.println(Math.sqrt(num));
+		System.out.println(invSqrt(num));
+		System.out.println(square(num));
 	}
 
+	public static double invSqrt(double x) {
+	    double xhalf = 0.5d*x;
+	    long i = Double.doubleToLongBits(x);
+	    i = 0x5fe6ec85e7de30daL - (i>>1);
+	    x = Double.longBitsToDouble(i);
+	    x = x*(1.5d - xhalf*x*x);
+	    x = x*(1.5d - xhalf*x*x);
+	    return 1/x;
+	}
+	
+	public static double square(double s){
+		double guess = s;
+		double previous=-1;
+		int i=0;
+		while(Math.abs(previous-guess)>0.0000000001){
+			previous=guess;
+			++i;
+			guess = guess - ((guess*guess - s)/(guess*2));
+		
+		}
+		System.out.println("iterations: "+i);
+
+		return guess;
+	}
+	
 	static Set<String> nearbyWords(String input) {
 		char[] letters = input.toCharArray();
 		Set<String> nearbyPermutations = nearbyPermutations(letters, 0);
