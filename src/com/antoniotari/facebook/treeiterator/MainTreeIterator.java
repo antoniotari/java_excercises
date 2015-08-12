@@ -1,4 +1,5 @@
 package com.antoniotari.facebook.treeiterator;
+import java.util.List;
 
 public class MainTreeIterator {
 	public static void main(String[] args) {
@@ -26,7 +27,18 @@ public class MainTreeIterator {
 		zigZag.spiralOrZigzagLevelOrder();
 		System.out.println("\n");
 		zigZag.levelOrderTraversal();
-		
+		System.out.println("\n");
+		System.out.println("serialized list");
+		List<TreeNode> seri=zigZag.serialize("quarks.ser");
+		for (TreeNode node:seri){
+			if(node!=null)
+				System.out.printf("%d ",node.val);
+			else
+				System.out.print("N ");
+		}
+		TreeNode root2 = TreeNode.deserialize("quarks.ser");
+		System.out.println("\n");
+		root2.levelOrderTraversal();
 		/*for (Iterator<TreeNode> iter = root.iterator(); iter.hasNext(); ) {
 			System.out.println(iter.next().val);
 		}*/
