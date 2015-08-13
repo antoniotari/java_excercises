@@ -1,11 +1,8 @@
 package com.antoniotari.facebook;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
-import com.antoniotari.facebook.treeiterator.TreeIterator;
-import com.antoniotari.facebook.treeiterator.TreeNode;
 
 /**
  * The complexity of that algorithm is O(n^m), where:
@@ -20,7 +17,7 @@ public class NearbyWords {
 		double num=2.0d;//444444434535.54345435343d;
 		System.out.println(Math.sqrt(num));
 		System.out.println(invSqrt(num));
-		System.out.println(square(num));
+		System.out.println(square(num,2));
 		
 		System.out.println("\n");
 		System.out.println("\n");
@@ -61,15 +58,20 @@ public class NearbyWords {
 	    return 1/x;
 	}
 	
-	public static double square(double s){
+	public static double square(final double s,final int root){
 		double guess = s;
 		double previous=-1;
 		int i=0;
 		while(Math.abs(previous-guess)>0.0000000001){
 			previous=guess;
 			++i;
-			guess = guess - ((guess*guess - s)/(guess*2));
-		
+			double top=guess;
+			for(int it=1;it<root;it++){
+				top*=guess;
+			}
+			double bot=(top/guess)*root;
+			//System.out.println(guess+" "+top+" "+bot);
+			guess = guess - ((top - s)/bot);
 		}
 		System.out.println("iterations: "+i);
 
