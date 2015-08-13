@@ -21,6 +21,34 @@ public class NearbyWords {
 		System.out.println(Math.sqrt(num));
 		System.out.println(invSqrt(num));
 		System.out.println(square(num));
+		
+		System.out.println("\n");
+		System.out.println("\n");
+		int[] array1={12,3,5,0,0,7,3,0,7,0,0,1,2,3,4,5,6,4};
+		int[] array=moveToFront(array1,0);
+		for(int i:array){
+			System.out.print(i+" ");
+		}
+		
+	}
+	
+	public static int[] moveToFront(int[] arr, int num){
+        if (arr.length == 0) return arr;
+		
+        int count = arr.length - 1;
+        
+		for (int i=arr.length-1; i>=0; i--) {
+            if (arr[i] != num) {
+                arr[count--] = arr[i];
+            }
+        }
+        
+		//fill the remaining with 'num'
+        for (;count >= 0;) {
+            arr[count--] = num;
+        }
+        
+        return arr;
 	}
 
 	public static double invSqrt(double x) {
