@@ -29,6 +29,13 @@ public class NearbyWords {
 		
 	}
 	
+		
+	/**
+	 * move all num at the beginning of the array
+	 * @param arr
+	 * @param num
+	 * @return
+	 */
 	public static int[] moveToFront(int[] arr, int num){
         if (arr.length == 0) return arr;
 		
@@ -48,6 +55,12 @@ public class NearbyWords {
         return arr;
 	}
 
+	/**
+	 * calculate inverse square root
+	 * QUAKE 3 methode
+	 * @param x
+	 * @return
+	 */
 	public static double invSqrt(double x) {
 	    double xhalf = 0.5d*x;
 	    long i = Double.doubleToLongBits(x);
@@ -58,6 +71,12 @@ public class NearbyWords {
 	    return 1/x;
 	}
 	
+	/**
+	 * calculate square root Newton-Rhapson method
+	 * @param s
+	 * @param root
+	 * @return
+	 */
 	public static double square(final double s,final int root){
 		double guess = s;
 		double previous=-1;
