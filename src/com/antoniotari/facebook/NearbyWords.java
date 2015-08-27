@@ -1,5 +1,6 @@
 package com.antoniotari.facebook;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +28,34 @@ public class NearbyWords {
 			System.out.print(i+" ");
 		}
 		
+		if(isAddTo(array1,6)){
+			System.out.println("\n\npair i , hash(T - arr[i]) has sum x");
+		}
+		
+	}
+	
+	/**
+	 * Given an array of integers return true if two of the numbers add to X.  
+	 */
+	public static boolean isAddTo(int[] array,int x){
+		HashMap<Integer,Integer> hash=new HashMap<Integer,Integer>();
+		for (int i=0; i<array.length;i++){
+			//if there's a repetition, and it's double is equal to x we return true
+			if(hash.get(array[i])!=null && array[i]*2==x){
+				return true;
+			}
+			// key is the element and value is its index
+			hash.put(array[i],i);  
+		}
+		 
+		for (int i=0; i<array.length; i++){
+			// if x - ele exists and is different from the current, we found a pair
+			Integer pos=hash.get(x-array[i]);
+			if (pos!=null && pos != i ){ 
+				return true;
+			}
+		}
+		return false;
 	}
 	
 		
