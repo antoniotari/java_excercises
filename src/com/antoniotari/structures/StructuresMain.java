@@ -1,5 +1,7 @@
 package com.antoniotari.structures;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -77,8 +79,71 @@ public class StructuresMain {
 			System.out.println(po.toString());
 			po=queue.poll();
 		}
-
 	}
+	
+	/**
+	 * merge k ordered lists
+	 * Time: log(k) * n.
+	 * k is number of list and n is number of total elements.
+	 */
+	public SinglyLinkedListNode<Integer> mergeKLists(ArrayList<SinglyLinkedListNode<Integer>> lists) {
+		if (lists.size() == 0) return null;
+ 
+		//PriorityQueue is a sorted queue
+		PriorityQueue<SinglyLinkedListNode<Integer>> q = new PriorityQueue<SinglyLinkedListNode<Integer>>(lists.size(),
+				new Comparator<SinglyLinkedListNode<Integer>>() {
+					public int compare(SinglyLinkedListNode<Integer> a, SinglyLinkedListNode<Integer> b) {
+						if ((a.data) > (b.data))
+							return 1;
+						else if(a.data == b.data)
+							return 0;
+						else 
+							return -1;
+					}
+				});
+ 
+		//add first node of each list to the queue
+		for (SinglyLinkedListNode<Integer> list : lists) {
+			if (list != null)
+				q.add(list);
+		}
+ 
+		SinglyLinkedListNode<Integer> head = new SinglyLinkedListNode<Integer>(0);
+		SinglyLinkedListNode<Integer> p = head; // serve as a pointer/cursor
+ 
+		while (q.size() > 0) {
+			SinglyLinkedListNode<Integer> temp = q.poll();
+			//poll() retrieves and removes the head of the queue - q. 
+			p.next = temp;
+ 
+			//keep adding next element of each list
+			if (temp.next != null)
+				q.add(temp.next);
+ 
+			p = p.next;
+		}
+ 
+		return head.next;
+	}
+	
+	/**
+	 * delete duplicates from list
+	 * @param head
+	 * @return
+	 */
+	public SinglyLinkedListNode<Integer> deleteDuplicates(SinglyLinkedListNode<Integer> head) {
+        if(head == null || head.next == null)return head;
+
+        SinglyLinkedListNode<Integer> p = head;
+        while( p!= null && p.next != null){
+            if(p.data == p.next.data){
+                p.next = p.next.next;
+            }else{
+                p = p.next; 
+            }
+        }
+        return head;
+    }
 }
 
 

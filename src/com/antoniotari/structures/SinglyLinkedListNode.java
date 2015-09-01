@@ -10,6 +10,7 @@ public class SinglyLinkedListNode<T> implements Iterable<T>{
 		
 	public SinglyLinkedListNode(T value){
 		data=value;
+		next=null;
 	}
 	
 	@Override
