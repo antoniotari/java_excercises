@@ -119,7 +119,7 @@ public class TreeNode implements Iterable<TreeNode>,Serializable{
 				ObjectInput input = new ObjectInputStream (buffer);
 				){
 			list = (List<TreeNode>)input.readObject();
-		} catch(ClassNotFoundException|IOException ex){
+		} catch(ClassCastException|ClassNotFoundException|IOException ex){
 			return null;
 		}
 
