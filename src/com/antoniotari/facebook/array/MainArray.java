@@ -1,5 +1,7 @@
 package com.antoniotari.facebook.array;
 
+import com.antoniotari.facebook.L;
+
 public class MainArray {
 
 	public static void main(String[] args) {
@@ -10,13 +12,15 @@ public class MainArray {
 		System.out.println(array[higherSmallerBinarySearch(10,array)]);
 		System.out.println(binarySearch(45,array));
 		
-		int[] inputArr = {45,23,11,89,77,98,4,28,65,43};
-        MergeSort mms = new MergeSort();
+		Integer[] inputArr = {45,23,11,89,77,98,4,28,65,43};
+        
+		L.log(findConsecutiveThatSumsToTarget(inputArr,292));
+		L.log(isNumbersThatSumToX(inputArr,0,58));
+
+        MergeSort<Integer> mms = new MergeSort<Integer>();
         mms.sort(inputArr);
-        for(int i:inputArr){
-            System.out.print(i);
-            System.out.print(" ");
-        }
+        L.log(inputArr);
+        L.nl();
 	}
 	
 	//given a target and a sorted array, find the highest value smaller than the target
@@ -79,5 +83,46 @@ public class MainArray {
             }
         }
         return -1;
+    }
+    
+    /**
+     * GIVEN:
+     * 		-array of consecutive integers
+     * 		-target integer
+     * FIND:
+     * 		if there's a consecutive sub-array that sums to target
+     */
+    public static boolean findConsecutiveThatSumsToTarget(Integer[] array,int target){
+    	int j=0;
+    	int sum=0;
+    	for(int i=0;i<array.length;i++){
+    		while(sum>target && j<i-1){
+    			sum-=array[j++];
+    		}
+    		if(sum==target)return true;
+    		sum+=array[i];
+    	}
+    	return false;
+    }
+    
+    /**
+     * in a list of integers find if there are n numbers that sum to x
+     * this is O(n2) since we execute the outer loop O(n) times and we execute the inner loop O(n) times
+     */
+    public static boolean isNumbersThatSumToX(Integer[] array,int n,int x){
+    	//sort the array
+    	new MergeSort<Integer>().sort(array);
+    	
+    	for(int i=0;i<array.length;i++){
+    		int j=i+1;
+    		int k=array.length-1;
+    		while(k>=j){
+    			int sum = array[i]+array[k]+array[j];
+    			if(sum==x)return true;
+    			//if sum is too big decrement k else increment j
+    			if(sum>0) --k; else ++j;
+    		}
+    	}
+    	return false;
     }
 }

@@ -1,14 +1,17 @@
 package com.antoniotari.facebook.array;
 
-public class MergeSort {
-	private int[] array;
-    private int[] tempMergArr;
+import java.lang.reflect.Array;
+
+public class MergeSort<T extends Comparable<T>> {
+	private T[] array;
+    private T[] tempMergArr;
     private int length;
     
-	public void sort(int inputArr[]) {
+	public void sort(T inputArr[]) {
         this.array = inputArr;
         this.length = inputArr.length;
-        this.tempMergArr = new int[length];
+        //this.tempMergArr = new T[length];
+        this.tempMergArr = (T[]) Array.newInstance(array[0].getClass(), length);
         doMergeSort(0, length - 1);
     }
  
@@ -33,7 +36,7 @@ public class MergeSort {
         int j = middle + 1;
         int k = lowerIndex;
         while (i <= middle && j <= higherIndex) {
-            if (tempMergArr[i] <= tempMergArr[j]) {
+            if (tempMergArr[i].compareTo(tempMergArr[j]) <= 0) {
                 array[k] = tempMergArr[i];
                 i++;
             } else {
