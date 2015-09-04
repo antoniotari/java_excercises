@@ -23,6 +23,8 @@ public class MainTreeIterator {
 			System.out.println(node.val);
 		}
 		
+		System.out.println("is present? "+root.isPresent(3));
+		
 		TreeNode zigZag=createBinaryTree();
 		zigZag.spiralOrZigzagLevelOrder();
 		System.out.println("\n");

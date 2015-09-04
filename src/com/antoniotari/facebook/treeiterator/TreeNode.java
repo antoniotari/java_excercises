@@ -21,21 +21,50 @@ import java.util.Stack;
 
 public class TreeNode implements Iterable<TreeNode>,Serializable{
 	static final long serialVersionUID = 35464376234L;
-    public int val; 
-    transient public TreeNode left; 
-    transient public TreeNode right;
-    
-    public TreeNode(int val){
-    	this.val=val;
-    }
+	public int val; 
+	transient public TreeNode left; 
+	transient public TreeNode right;
 
-    
+	public TreeNode(int val){
+		this.val=val;
+	}
+
+
 	@Override
 	public Iterator<TreeNode> iterator() {
-        return new TreeIterator(this);
+		return new TreeIterator(this);
 	} 
-	
-	
+
+	/**
+	 * check if an element is present in the tree
+	 * @param target
+	 * @return
+	 */
+	public boolean isPresent(int target){
+		return isPresent(this,target);
+	}
+
+	private boolean isPresent(TreeNode node,int target){
+		// 1. Base case == empty tree 
+		// in that case, the target is not found so return false 
+		if (node == null) { 
+			return false; 
+		} 
+		else { 
+			// 2. see if found here 
+			if (target == node.val) return true; 
+			else { 
+				// 3. otherwise recur down the correct subtree 
+				if (target < node.val) {
+					return(isPresent(node.left, target)); 
+				}
+				else {
+					return(isPresent(node.right, target)); 
+				}
+			} 
+		} 
+	}
+
 	// prints spiral/zigzag level order
 	public void spiralOrZigzagLevelOrder() {
 		TreeNode root=this;
@@ -65,7 +94,7 @@ public class TreeNode implements Iterable<TreeNode>,Serializable{
 			stack=tempStack; 
 		}
 	}
-	
+
 	// prints in level order
 	public void levelOrderTraversal() {
 		Queue<TreeNode> queue=new LinkedList<TreeNode>();
@@ -79,7 +108,7 @@ public class TreeNode implements Iterable<TreeNode>,Serializable{
 				queue.add(tempNode.right);
 		}
 	}
-	
+
 	/**
 	 * serialize the tree and write to file
 	 * @param filename
@@ -97,7 +126,7 @@ public class TreeNode implements Iterable<TreeNode>,Serializable{
 				queue.add(tempNode.right);
 			}
 		}
-		
+
 		try (
 				OutputStream file = new FileOutputStream(filename);
 				OutputStream buffer = new BufferedOutputStream(file);
@@ -107,10 +136,10 @@ public class TreeNode implements Iterable<TreeNode>,Serializable{
 		}  
 		catch(IOException ex){
 		}
-		
+
 		return list;
 	}
-	
+
 	public static TreeNode deserialize(/*final List<TreeNode> list, */String filename){
 		List<TreeNode> list=null;
 		try(
