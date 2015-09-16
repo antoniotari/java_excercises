@@ -1,4 +1,4 @@
-package com.antoniotari.facebook.array;
+package com.antoniotari.excercises.array;
 
 import java.lang.reflect.Array;
 

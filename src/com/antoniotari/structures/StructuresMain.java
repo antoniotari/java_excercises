@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-import com.antoniotari.facebook.L;
+import com.antoniotari.excercises.L;
 
 public class StructuresMain {
 

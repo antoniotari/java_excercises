@@ -1,4 +1,4 @@
-package com.antoniotari.facebook;
+package com.antoniotari.excercises;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

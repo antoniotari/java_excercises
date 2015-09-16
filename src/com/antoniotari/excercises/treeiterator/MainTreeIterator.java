@@ -1,4 +1,4 @@
-package com.antoniotari.facebook.treeiterator;
+package com.antoniotari.excercises.treeiterator;
 import java.util.List;
 
 public class MainTreeIterator {

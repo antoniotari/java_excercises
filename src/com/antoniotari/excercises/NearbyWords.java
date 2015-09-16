@@ -1,4 +1,4 @@
-package com.antoniotari.facebook;
+package com.antoniotari.excercises;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package com.antoniotari.facebook.treeiterator;
+package com.antoniotari.excercises.treeiterator;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

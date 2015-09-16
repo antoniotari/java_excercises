@@ -1,4 +1,4 @@
-package com.antoniotari.facebook.strings;
+package com.antoniotari.excercises.strings;
 
 public class StringsMain {
 

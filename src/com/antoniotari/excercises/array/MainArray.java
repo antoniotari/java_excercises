@@ -1,16 +1,21 @@
-package com.antoniotari.facebook.array;
+package com.antoniotari.excercises.array;
 
-import com.antoniotari.facebook.L;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+import com.antoniotari.excercises.L;
 
 public class MainArray {
 
 	public static void main(String[] args) {
-		int[] array={1,2,3,5,6,7,8,11,22,45,56,67};
-		int[] array1={1,2,8,10,21,32};
+		Integer[] array={1,2,3,5,6,7,8,11,22,45,56,67};
+		Integer[] array1={1,2,8,10,21,32};
 		int val=higherSmaller(array,10);
 		System.out.println(val);
 		System.out.println(array[higherSmallerBinarySearch(10,array)]);
 		System.out.println(binarySearch(45,array));
+		L.log("has duplicates?",hasDuplicates(array));
 		
 		Integer[] inputArr = {45,23,11,89,77,98,4,28,65,43};
         
@@ -27,7 +32,7 @@ public class MainArray {
 	/**
 	 * @return null if nothing is found
 	 */
-	public static Integer higherSmaller(final int[] array,final int target){
+	public static Integer higherSmaller(final Integer[] array,final int target){
 		Integer current=null;
 		int i=0;
 		while(array[i]<target){
@@ -37,7 +42,7 @@ public class MainArray {
 		return current;
 	}
 	
-    public static int higherSmallerBinarySearch(int key, int[] array) {
+    public static int higherSmallerBinarySearch(int key, Integer[] array) {
         int lo = 0;
         int hi = array.length - 1;
         while (lo <= hi) {
@@ -68,7 +73,7 @@ public class MainArray {
      * @param array the array of integers, must be sorted in ascending order
      * @return index of key in array a[] if present; -1 if not present
      */
-    public static int binarySearch(int key, int[] array) {
+    public static int binarySearch(int key, Integer[] array) {
         int lo = 0;
         int hi = array.length - 1;
         while (lo <= hi) {
@@ -125,4 +130,24 @@ public class MainArray {
     	}
     	return false;
     }
+    
+    public static boolean hasDuplicates(Integer[] array){
+    	new MergeSort<Integer>().sort(array);
+    	
+    	for(int i=0;i<array.length-1;i++){
+    		if(array[i]+array[i+1]==array[i]*2){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    public static boolean hasDuplicates2(Integer[] array){
+    	Set<Integer> integerSet=new LinkedHashSet<Integer>();
+    	for(Integer inte:array){
+    		if(!integerSet.add(inte))return true;
+    	}
+    	return false;
+    }
+    
 }

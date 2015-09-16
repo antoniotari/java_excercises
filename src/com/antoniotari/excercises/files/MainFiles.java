@@ -1,4 +1,4 @@
-package com.antoniotari.facebook.files;
+package com.antoniotari.excercises.files;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -17,10 +17,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
-import com.antoniotari.facebook.treeiterator.TreeNode;
 
 public class MainFiles {
 
