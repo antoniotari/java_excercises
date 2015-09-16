@@ -10,7 +10,7 @@ import com.antoniotari.excercises.L;
 
 public class BinarySearchTreeEx{
 	
-	public static class Node<K extends Comparable<K>,V> implements Iterable<Node<K,V>>{
+	public static class Node<K extends Comparable<K>,V> implements Iterable<Node<K,V>>,Cloneable{
 		
 		V value;
 		K key;
@@ -71,6 +71,18 @@ public class BinarySearchTreeEx{
 			return node;
 		}
 		
+		@Override
+		public Object clone() throws CloneNotSupportedException{
+			Node<K,V> node =(Node<K,V>) super.clone();
+			node.key=key;
+			node.value=value;
+			if(node.left!=null)
+				node.left=(Node<K,V>)node.left.clone();
+			if(node.right!=null)
+				node.right=(Node<K,V>)node.right.clone();
+			
+			return node;
+		}
 		
 		@Override
 		public Iterator<Node<K,V>> iterator() {
@@ -139,6 +151,16 @@ public class BinarySearchTreeEx{
 		
 		for(Node<Integer,String> node:root){
 			L.log(node.key);
+		}
+		
+		try {
+			Node<Integer,String> root2=(Node<Integer,String>)root.clone();
+			for(Node<Integer,String> node:root2){
+				L.log(node.key);
+			}
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
