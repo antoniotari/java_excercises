@@ -1,4 +1,4 @@
-package com.antoniotari.excercises.treeiterator;
+package com.antoniotari.excercises.trees;
 import java.util.List;
 
 public class MainTreeIterator {

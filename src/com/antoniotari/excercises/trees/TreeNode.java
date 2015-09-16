@@ -1,4 +1,4 @@
-package com.antoniotari.excercises.treeiterator;
+package com.antoniotari.excercises.trees;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
