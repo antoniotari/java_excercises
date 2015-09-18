@@ -1,11 +1,7 @@
 package com.antoniotari.excercises.trees;
 
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Stack;
-
 import com.antoniotari.excercises.L;
 
 public class BinarySearchTreeEx{

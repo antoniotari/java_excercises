@@ -22,8 +22,8 @@ import java.util.Stack;
 public class TreeNode implements Iterable<TreeNode>,Serializable{
 	static final long serialVersionUID = 35464376234L;
 	public int val; 
-	transient public TreeNode left; 
-	transient public TreeNode right;
+	public TreeNode left; 
+	public TreeNode right;
 
 	public TreeNode(int val){
 		this.val=val;

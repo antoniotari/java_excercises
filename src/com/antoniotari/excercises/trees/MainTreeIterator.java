@@ -1,5 +1,18 @@
 package com.antoniotari.excercises.trees;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.List;
+
+import com.antoniotari.excercises.L;
 
 public class MainTreeIterator {
 	public static void main(String[] args) {
@@ -44,6 +57,27 @@ public class MainTreeIterator {
 		/*for (Iterator<TreeNode> iter = root.iterator(); iter.hasNext(); ) {
 			System.out.println(iter.next().val);
 		}*/
+		
+		try( 	OutputStream file=new FileOutputStream("tree.ser");
+				OutputStream buffer = new BufferedOutputStream(file);
+				ObjectOutput output = new ObjectOutputStream(buffer);	
+				){
+			output.writeObject(zigZag);
+		}catch(IOException e){
+			
+		}
+		
+		try(
+				InputStream is = new FileInputStream("tree.ser");
+				InputStream buffer = new BufferedInputStream(is);
+				ObjectInput input = new ObjectInputStream (buffer);
+				){
+			TreeNode root3 =(TreeNode) input.readObject();
+			L.log("\n\nnew serialized");
+			root3.levelOrderTraversal();
+		}catch(IOException|ClassNotFoundException e){
+			
+		}
 	}
 	
 	 public static TreeNode createBinaryTree() {
