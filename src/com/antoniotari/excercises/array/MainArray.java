@@ -91,6 +91,41 @@ public class MainArray {
     }
     
     /**
+     * this binary search will work on a rotated sorted array too
+     * @param array
+     * @param key
+     * @return
+     */
+    public static int rotatedBinarySearch(int[] array, int key) {
+    	int left = 0;
+    	int right = array.length - 1;
+
+    	while (left <= right) {
+    		// Avoid overflow, same as M=(L+R)/2
+    		int mid = left + ((right - left) / 2);
+    		if (array[mid] == key) return mid;
+
+    		// the bottom half is sorted
+    		if (array[left] <= array[mid]) {
+    			if (array[left] <= key && key < array[mid]){
+    				right = mid - 1;
+    			} else {
+    				left = mid + 1;
+    			}
+    		}
+    		// the upper half is sorted
+    		else {
+    			if (array[mid] < key && key <= array[right]){
+    				left = mid + 1;
+    			} else { 
+    				right = mid - 1;
+    			}
+    		}
+    	}
+    	return -1;
+    }
+    
+    /**
      * GIVEN:
      * 		-array of consecutive integers
      * 		-target integer
