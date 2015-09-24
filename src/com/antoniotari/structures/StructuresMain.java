@@ -200,7 +200,9 @@ public class StructuresMain {
 		while(queue.size()>0){
 			QueueElementWrapper wrapper=queue.poll();
 			resultList.add(wrapper.data);
+			//get the right list from the array of lists ...
 			List<Integer> list = lists[wrapper.listNumber];
+			//so we can put its first element in the priority queue
 			if(list.size()>0){
 				queue.add(new QueueElementWrapper(list.get(0),wrapper.listNumber));
 				list.remove(0);
