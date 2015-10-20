@@ -28,8 +28,8 @@ public class MainArray {
         L.nl();
 	}
 	
-	//given a target and a sorted array, find the highest value smaller than the target
 	/**
+	 * given a target and a sorted array, find the highest value smaller than the target
 	 * @return null if nothing is found
 	 */
 	public static Integer higherSmaller(final Integer[] array,final int target){
@@ -146,7 +146,7 @@ public class MainArray {
     }
     
     /**
-     * in a list of integers find if there are n numbers that sum to x
+     * in a list of integers find if there are 3 numbers that sum to x
      * this is O(n2) since we execute the outer loop O(n) times and we execute the inner loop O(n) times
      */
     public static boolean isNumbersThatSumToX(Integer[] array,int n,int x){
@@ -170,7 +170,7 @@ public class MainArray {
     	new MergeSort<Integer>().sort(array);
     	
     	for(int i=0;i<array.length-1;i++){
-    		if(array[i]+array[i+1]==array[i]*2){
+    		if(array[i]==array[i+1]){
     			return true;
     		}
     	}

@@ -49,11 +49,6 @@ public class ChessQuestionMain {
 		int paths=0;
 		int count=findPaths(totMoves,1,/*done,*/moveCounter,paths);
 		System.out.println(count);
-
-		/*int count=0;
-		for(int i=0;i<=9;i++){
-			if(done.get(i))count++;
-		}*/
 	}
 
 	public static int findPaths(final int numberOfMoves,int startingPoint,int moveCounter,int paths){
